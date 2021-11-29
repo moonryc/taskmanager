@@ -7,13 +7,18 @@ const taskFormHandler = (event) => {
     let taskNameInput = document.querySelector("input[name='task-name']").value;
     let taskTypeSelect = document.querySelector("select[name='task-type']").value;
 
+    if(!taskNameInput || !taskTypeSelect) {
+        alert("you left something blank");
+        return;
+    }
+
     let taskDataObj = {
         name: taskNameInput,
         type: taskTypeSelect
     }
 
     createTaskEl(taskDataObj);
-
+    formEl.reset();
 }
 
 const createTaskEl = (taskDataObj) => {
